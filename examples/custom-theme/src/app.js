@@ -67,7 +67,7 @@ class App extends Component {
     height: window.innerHeight
   };
 
-  componentWillMount() {
+  componentDidMount() {
     // event listeners
     window.addEventListener('resize', this._onResize);
 

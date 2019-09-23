@@ -95,7 +95,7 @@ class App extends Component {
     height: window.innerHeight
   };
 
-  componentWillMount() {
+  componentDidMount() {
     // if we pass an id as part of the url
     // we ry to fetch along map configurations
     const {
@@ -113,15 +113,13 @@ class App extends Component {
       // TODO?: validate map url
       this.props.dispatch(loadRemoteMap({dataUrl: query.mapUrl}));
     }
-  }
 
-  componentDidMount() {
     // delay zs to show the banner
     // if (!window.localStorage.getItem(BannerKey)) {
     //   window.setTimeout(this._showBanner, 3000);
     // }
     // load sample data
-    this._loadSampleData();
+    // this._loadSampleData();
     // Notifications
     // this._loadMockNotifications();
   }
