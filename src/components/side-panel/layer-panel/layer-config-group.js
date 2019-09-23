@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React, {Component} from 'react';
+import {polyfill} from 'react-lifecycles-compat';
 import styled from 'styled-components';
 import classnames from 'classnames';
 import Switch from 'components/common/switch';
@@ -107,7 +108,7 @@ const ConfigGroupContent = styled.div`
   }
 `;
 
-export default class LayerConfigGroup extends Component {
+class LayerConfigGroup extends Component {
 
   static defaultProps = {
     collapsible: false,
@@ -115,24 +116,18 @@ export default class LayerConfigGroup extends Component {
     onChange: () => {}
   };
 
+  static getDerivedStateFromProps(props, state) {
+    //  invoked after a component is instantiated as well as before it is re-rendered
+    if (props.expanded && state.collapsed) {
+      return {collapsed: false};
+    }
+
+    return null;
+  }
+
   state = {
     collapsed: true
   };
-
-  componentDidMount() {
-    this._setCollapseState(this.props.expanded);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._setCollapseState(nextProps.expanded);
-  }
-
-  _setCollapseState(expanded) {
-    // if props,expanded, and state collapsed, set collapsed to be false
-    if (expanded && this.state.collapsed) {
-      this.setState({collapsed: false});
-    }
-  }
 
   render() {
     const {
@@ -179,3 +174,6 @@ export default class LayerConfigGroup extends Component {
   }
 }
 
+polyfill(LayerConfigGroup);
+
+export default LayerConfigGroup;
