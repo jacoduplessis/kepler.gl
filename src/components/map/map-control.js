@@ -336,7 +336,7 @@ const MapControlFactory = () => {
 
       // optional
       readOnly: PropTypes.bool,
-      scale: PropTypes.number
+      scale: PropTypes.number,
       mapLayers: PropTypes.object,
       editor: PropTypes.object
     };
