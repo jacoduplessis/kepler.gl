@@ -12,7 +12,7 @@
 |   |   |
 |---|---|
 | **Local files**  | <span style="font-weight:normal">Upload CSV / GeoJSON files. Because data is only stored in your browser, there is a **250mb** limit on how much data Chrome allows you to upload into a browser. For datasets larger than **250mb** you should directly load them from a remote URL. See below.<span>  |
-| **From URL**  | Directly load data or map json bu pasting a remote URL. You can link it to CSV | JSON | Kepler.gl config json. Make sure the url contains the file extension. CORS policy must be defined on your custom url domain. |
+| **From URL**  | Directly load data or map json by pasting a remote URL. You can link it to CSV | JSON | kepler.gl config json. Make sure the url contains the file extension. CORS policy must be defined on your custom url domain. |
 | **Sample data**  | Load one of kepler.gl’s sample datasets. The sample map data and config are directly loaded from  [kepler.gl-data github][kepler.gl-data-github] repo  |
 
 
@@ -29,7 +29,7 @@ Geometry coordinates should be presented with a geographic coordinate reference 
 
 ### CSV
 
-Csv file should contian header row and multiple columns. Each row should be 1 feature. Each column should contain only 1 data type, based on which kepler.gl will use to create layers and filters.
+CSV file should contain a header row and multiple columns. Each row should be 1 feature. Each column should contain only 1 data type, based on which kepler.gl will use to create layers and filters.
 
 | id | point_latitude | point_longitude | value | start_time
 |---|---|---|---|---
@@ -55,13 +55,13 @@ Because CSV file content is uploaded as strings, kepler.gl will attempt to detec
 
 #### 2. Layer detection based on column names
 
-kepler.gl will auto detect layer, if the column names follows certain naming convention. kepler.gl creates a point layer if  your CSV has columns are named `<name>_lat` and `<name>_lng` or `<name>_latitude` and `<name>_longitude`, or `<name>_lat` and `<name>_lon`.
+kepler.gl will auto detect layer, if the column names follows certain naming conventions. kepler.gl creates a point layer if  your CSV has columns are named `<name>_lat` and `<name>_lng` or `<name>_latitude` and `<name>_longitude`, or `<name>_lat` and `<name>_lon`.
 
 | layer | auto create layer from column names
 |---|---
 |**Point** | Point layer names have to be in pairs, and **ends with** `<foo>lat, <foo>lng`; `<foo>latitude, <foo>longitude`; `<foo>lat, <foo>lon`|
 |**Arc**| If two points layers are detected, one arc layer will be created |
-|**Icon**| A column named `icon` is present|
+|**Icon**| A column named `icon` is present |
 |**H3**| A column named `h3_id` or `hexagon_id` is present |
 |**Polygon**| A column content contains `geojson` data types. Acceptable formats include [Well-Known Text](http://www.postgis.net/docs/ST_AsText.html) e.g. `POLYGON ((-74.158 40.835, -74.148 40.830, -74.151 40.832, -74.158 40.835))` and [GeoJSON Geometry](https://tools.ietf.org/html/rfc7946#appendix-A). e.g. `{"type":"LineString","coordinates":[[100.0, 0.0],[101.0, 1.0]]}`
 
@@ -94,7 +94,7 @@ kepler.gl will auto detect layer, if the column names follows certain naming con
     }
   ```
 
-  - GeoJSON Feature Collection.
+  - GeoJSON Feature Collection:
   ```json
   {
     "type": "FeatureCollection",
@@ -137,6 +137,7 @@ kepler.gl will auto detect layer, if the column names follows certain naming con
   Feature properties will be parsed as columns. You can apply color, filters based on them.
 
 #### 2. Auto styling
+
 kepler.gl will read styles from GeoJSON files. If you are a GeoJSON expert, you can add style declarations to feature properties. kepler.gl will use the declarations to automatically style your feature. The acceptable style properties are:
   ```json
   "properties": {
@@ -174,13 +175,13 @@ kepler.gl will read styles from GeoJSON files. If you are a GeoJSON expert, you 
 
 You load data or map through custom URL. It currently supports URLs with file extension of `csv`, `json` and `kepler.gl.json`
 
-In addition, this also by-passes 250mb file upload size limit which allows you to upload larger file to Kepler.
+In addition, this also by-passes 250mb file upload size limit which allows you to upload larger file to kepler.
 
 ![Load Map Using URL](https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/documentation/a-load-map-using-url.gif "Load Map Using URL")
 
-### Use Kepler.gl’s Sample Maps
+### Use kepler.gl’s Sample Maps
 
-The sample maps are a great option for new users to explore Kepler.gl and get a feel for how it works.
+The sample maps are a great option for new users to explore kepler.gl and get a feel for how it works.
 
 1. At the initial load prompt select “Try sample data” in the top right corner.
 
@@ -198,7 +199,7 @@ To add additional datasets to your map:
 
 ![Add more data](https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/documentation/image22.png "Add more data")
 
-2. Choose one of the options above: upload a JSON/CSV file, or use Kepler.gl’s sample data.
+2. Choose one of the options above: upload a JSON/CSV file, or use kepler.gl’s sample data.
 
 3. Repeat as needed. There is no limit on the number of datasets you can add. However, adding too many might cause its performance to suffer.
 
